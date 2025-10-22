@@ -68,52 +68,59 @@ python3 main.py
 
 1. Examine the code for the `smiley.py` file and provide  an example of a variable of each of the following types and their corresponding values (`_` should be replaced with the appropriate values):
 
-   | Type                    | name       | value          |
-   | ----------              | ---------- | -------------- |
-   | built-in primitive type | _          |  _             |
-   | built-in composite type | _          |  _             |
-   | user-defined type       | _          |  _             |
+   | Type                    | name   | value |
+   | ----------              |--------|-------|
+   | built-in primitive type | dimmed    | True      |
+   | built-in composite type | WHITE  | (255, 255, 255) |
+   | user-defined type       | sense_hat | SenseHat() |
 
 2. Fill in (`_`) the following table based on the code in `smiley.py`:
 
-   | Object                   | Type                    |
-   | ------------             | ----------------------- |
-   | self.pixels              | _                       |
-   | A member of self.pixels  | _                       |
-   | self                     | _                       |
+   | Object                   | Type   |
+   | ------------             |--------|
+   | self.pixels              | list   |
+   | A member of self.pixels  | tuple  |
+   | self                     | Smiley |
 
 3. Examine the code for `smiley.py`, `sad.py`, and `happy.py`. Give an example of each of the following control structures using an example from **each** of these files. Include the first line and the line range:
 
-   | Control Flow | File       | First line  | Line range  |
-   | ------------ | ---------- | ----------- | ----------- |
-   |  sequence    |  _         | _           | _           |
-   |  selection   | _          | _           | _           |
-   |  iteration   | _          | _           | _           |
+   | Control Flow | File      | First line | Line range        |
+   | ------------ |-----------|------------|-------------------|
+   |  sequence    | smiley.py | 13         | 13-26 (inclusive) |
+   |  selection   | happy.py  | 31         | 31-31             |
+   |  iteration   | sad.py    | 25         | 25-30 (inclusive) |
 
 4. Though everything in Python is an object, it is sometimes said to have four "primitive" types. Examining the three files `smiley.py`, `sad.py`, and `happy.py`, identify which of the following types are used in any of these files, and give an example of each (use an example from the code, if applicable, otherwise provide an example of your own):
 
-   | Type                    | Used? | Example |
-   | ----------------------- | ----- | --------|
-   | int                     | _     | _          |
-   | float                   | _     | _          |
-   | str                     | _     | _          |
-   | bool                    | _     | _          |
+   | Type                    | Used?               | Example                              |
+   | ----------------------- |---------------------|--------------------------------------|
+   | int                     | Yes inside the list | mouth = [41, 46, 50, 51, 52, 53]     |
+   | float                   | Yes                 | def blink(self, delay=0.25):         |
+   | str                     | No                  | name = "John"                        |
+   | bool                    | Yes                 | def draw_eyes(self, wide_open=True): |
 
 5. Examining `smiley.py`, provide an example of a class variable and an instance variable (attribute). Explain **why** one is defined as a class variable and the other as an instance variable.
 
-> Your answer here
+> self.sense_hat is an instance var the reason for this is each Smiley needs its own SenseHat instance.
+> 
+> WHITE is a class var the reason for this is that it remains const and therefore isn't changed per instance so there is no need for each instance to have its own version.
 >
 
 6. Examine `happy.py`, and identify the constructor (initializer) for the `Happy` class:
    1. What is the purpose of a constructor (in general) and this one (in particular)?
 
-   > Your answer here
+   > The purpose in general is to setup the class for use and for this one it is to draw the happy face.
    >
 
    2. What statement(s) does it execute (consider the `super` call), and what is the result?
 
-   > Your answer here
-   >
+   > These 3 
+        
+        super().__init__() - Calls the parent (Smiley’s) __init__() method
+
+        self.draw_mouth() - Draws a mouth.
+        self.draw_eyes() - Draws the eyes open.
+
 
 ### 2.3. Code style
 
