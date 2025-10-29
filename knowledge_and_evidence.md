@@ -246,11 +246,12 @@ Unlike the `Happy` smiley, the current implementation of the `Sad` smiley does n
 
 Include a screenshot of the sad smiley or the modified `main.py`:
 
-![Sad Smiley Blinking](screenshots/sad_blinking.png)
+![Sad Smiley Blinking](screenshots/Sad Blink1.png)
+![Sad Smiley Blinking](screenshots/Sad Blink2.png)   
 
 - Observe and document the Sad smiley as it blinks its eyes. Describe any adjustments or issues encountered during implementation.
 
-  > Your answer here
+  > An adjustment i had to do was change the Happy() to a Sad() in the main.py file so it would use my Sad class instead. Only issue i encountered was for a missing import from sad import Sad
 
   ### 2.8. If It Walks Like a Duck…
 
@@ -258,23 +259,23 @@ Include a screenshot of the sad smiley or the modified `main.py`:
 
   1. **Class Type Analysis:** What kind of class is `Blinkable`? Inspect its superclass for clues about its classification.
 
-     > Your answer here
+     > It is an abstract class.
 
   2. **Class Implementation:** `Blinkable` is a class intended to be implemented by other classes. What generic term describes this kind of class, which is designed for implementation by others? **Clue**: Notice the lack of any concrete implementation and the naming convention.
 
-  > Your answer here
+  > Abstract.
 
   3. **OO Principle Identification:** Regarding your answer to question (2), which Object-Oriented (OO) principle does this represent? Choose from the following and justify your answer in 1-2 sentences: Abstraction, Polymorphism, Inheritance, Encapsulation.
 
-  > Your answer here
+  > This is abstraction because the Blinkable class just defines a general interface. Other classes can just interact Blinkables defined methods without caring about the implementation.
 
   4. **Implementation Flexibility:** Explain why you could grant the Sad Smiley a blinking feature similar to the Happy Smiley's implementation, even without directly using `Blinkable`.
 
-  > Your answer here
+  > You dont need to inherit from blinkable to make it blink if you inherit from blinkable you must be able to blink thats why its there so someone could look at the class and say oh it inherits from blinkable it must be able to blink but you dont need the blinkable class to be able to blink you can just add the method and call it.
 
   5. **Concept and Language Specificity:** In relation to your response to question (4), what is this capability known as, and why is it feasible in Python and many other dynamically typed languages but not in most statically typed programming languages like C#? **Clue** This concept is hinted at in the title of this section.
 
-  > Your answer here
+  > I assume your talking about Duck typing while i didn't use duck typing for my implementation of blink. Python can do this because it is a dynamically typed language so method availability is checked at runtime instead of compile time. In statically typed languages method availability is enforced at compile time.
 
   ***
 
@@ -287,19 +288,20 @@ Include a screenshot of the sad smiley or the modified `main.py`:
   1. **Defined Colors and Their Location:**
 
      1. Which colors are defined and in which class(s)?
-        > Your answer here
+        > White, Green, Red, Yellow, Blank
      2. What type of variables hold these colors? Are the values expected to change during the program's execution? Explain your answer.
-        > Your answer here
+        > Const variables and no they are not hence they are const.
      3. Add the color blue to the appropriate class using the appropriate format and values.
+        > BLUE = (0, 0, 255)
 
   2. **Usage of Color Variables:**
 
      1. In which classes are the color variables used?
-        > Your answer here
+        > Smiley, Happy and Sad.
 
   3. **Simple Method to Change Colors:**
   4. What is the easiest way you can think to change the smileys to green? Easiest, not necessarily the best!
-     > Your answer here
+     > Go into every class that uses YELLOW and change it to GREEN.
 
 
 
