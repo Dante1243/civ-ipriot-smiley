@@ -53,7 +53,7 @@ Address the following tasks and questions based on the code provided in this rep
 3. Run the project locally by executing the `main.py` file
 4. Evidence this by providing screenshots of the project directory structure and the output of the `main.py` file
 
-![Local Execution (INSERT YOUR SCREENSHOT)](screenshots/CREATE_A_SCREENSHOT_OF_YOUR_local_setup.png)
+![Local Execution (INSERT YOUR SCREENSHOT)](screenshots/Local Exec.png)~~~~
 
 If you are running on a Raspberry Pi, you can use the following command to run the project and then screenshot the result:
 
@@ -126,17 +126,28 @@ python3 main.py
 
 1. What code style is used in the code? Is it likely to be the same as the code style used in the SenseHat? Give to reasons as to why/why not:
 
-> Your answer here
+> PEP 8, yes because SenseHat is an official python library which means it follow standard python practices which includes PEP 8.
 >
 
 2. List three aspects of this convention you see applied in the code.
 
-> Your answer here
+> Function names are in lowercase using and use underscores where applicable.
+> 
+> Docstrings are writen in triple quotes.
+> 
+> Theres 1 blank line between methods.
 >
 
 3. Give two examples of organizational documentation in the code.
+>  
+        """
+       Draws the eyes (open or closed) on the standard smiley.
+        :param wide_open (bool): eyes open or closed.
+        """
 
-> Your answer here
+        """
+       Renders a mouth by blanking the pixels that form that object.
+        """
 >
 
 ### 2.4. Identifying and understanding classes
@@ -147,19 +158,21 @@ python3 main.py
   
   Use the following table for your answers:
 
-| Class Name | Super or Sub? | Direct parent(s) |
-| ---------- | ------------- | ---------------- |
-| NotReal    | Sub           | NotRealParent    |
-|   ...      |   ...         |      ...         |
+| Class Name | Super or Sub? | Direct parent(s)  |
+|------------|---------------|-------------------|
+| Blinkable  | Sub & Super   | ABC               |
+| Happy      | Sub           | Smiley, Blinkable |
+| Sad        | Sub           | Smiley            |
+| Smiley     | Super         |                   |
 
 2. Explain the concept of abstraction, giving an example from the project (note "implementing an ABC" is **not** in itself an example of abstraction). (Max 150 words)
 
-> Your answer here
+> Abstraction is the process of hiding complex implementation details and only exposing what is necessary. For example when you call blink on a blinkable class you don't have to be concerned with how that class performs the blink. 
 >
 
 3. What is the name of the process of deriving from base classes? What is its purpose in this project? (Max 150 words)
 
-> Your answer here
+> Your base class should provide some sort of base or extensible framework that you intend to extend or implement the behaviour of in a child class. For example the blinkable class defines a bink method that is overridden in children, so you can be sure that if a class inherits from blinkable then it can blink.
 >
 
 ### 2.5. Compare and contrast classes
@@ -167,28 +180,28 @@ python3 main.py
 Compare and contrast the classes Happy and Sad.
 
 1. What is the key difference between the two classes?
-   > Your answer here
+   > Sad does not derive from the blinkable class.
    >
 2. What are the key similarities?
-   > Your answer here
+   > They both draw a mouth and eyes.
    >
 3. What difference stands out the most to you and why?
-   > Your answer here
+   > That Sad cannot blink because it doesn't have a blink method, and it does not inherit from the blinkable class.
    >
 4. How does this difference affect the functionality of these classes
-   > Your answer here
+   > Sad cannot blink because it does not have that functionality implemented to blink and doesnt inherit from blinkable.
    >
 
 ### 2.6. Where is the Sense(Hat) in the code?
 
 1. Which class(es) utilize the functionality of the SenseHat?
-   > Your answer here
+   > Smiley and its children.
    >
 2. Which of these classes directly interact with the SenseHat functionalities?
-   > Your answer here
+   > Smiley
    >
 3. Discuss the hiding of the SenseHAT in terms of encapsulation (100-200 Words)
-   > Your answer here
+   > Sense Hat is a good example of encapsulation it hides all of its inner workings from the user, like managing a GUI, process queue and managing a LED matrix. Users dont need to know how the class works they just interact with a simple interface like set_pixels method or the low_light property and it just works. This encapsulation also ensures that external factors won't accidently interfere with Sense Hat classes internal functionality or state. Encapsulation also improves maintainability and flexibility of a class whether the program interacts with this mock or real Sense Hat class the external interface remains the so the program runs as normal with either or.
    >
 
 ### 2.7. Sad Smileys Can’t Blink (Or Can They?)
@@ -199,22 +212,22 @@ Unlike the `Happy` smiley, the current implementation of the `Sad` smiley does n
 
 1. Does the code's author believe that every `Smiley` should be able to blink? Explain.
 
-> Your answer here
+> No because if they did there would be a blink method in the Smiley class.
 >
 
 2. For those smileys that blink, does the author expect them to blink in the same way? Explain.
 
-> Your answer here
+> No inheriting from the blink class just means it can blink it does not mean they the blink the exact same. The way they blink is up to each class that inherits from blinkable to decide.
 >
 
 3. Referring to the implementation of blink in the Happy and Sad Smiley classes, give a brief explanation of what polymorphism is.
 
-> Your answer here
+> Polymorphism is the ability for inherting classes to be treated through the same interface even though there internals may be different for example code can call the blink method on any blinkable without knowing the exact subclass. 
 >
 
 4. How is inheritance used in the blink method, and why is it important for polymorphism?
 
-> Your answer here
+> Inheritance allows the happy class to inherit from blinkable which means it inherits the blink method which is abstract in this case which forces a implementation in any derived classes of blinkable. Which is important for polymorphism because it guarantees that any class that inherits from blinkable will be able to blink.
 >
 1. **Implement Blink in Sad Class:**
 
