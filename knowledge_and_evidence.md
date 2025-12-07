@@ -109,31 +109,32 @@ python3 main.py
 6. Examine `happy.py`, and identify the constructor (initializer) for the `Happy` class:
    1. What is the purpose of a constructor (in general) and this one (in particular)?
 
-   > The purpose in general is to setup the class for use and for this one it is to draw the happy face.
+   > The purpose in general is to setup the class for use and for this class (Happy) the contructor calls super to setup the pixel grid and self.sense_hat then draws a happy face
    >
 
    2. What statement(s) does it execute (consider the `super` call), and what is the result?
 
    > These 3 
         
-        super().__init__() - Calls the parent (Smiley’s) __init__() method
+        super().__init__() - Calls the parent Smiley constructor. 
+        Result: This creates the self.sense_hat instance and initializes the self.pixels list. Without this the other methods would not work because the pixel grid wouldn't exist.
 
-        self.draw_mouth() - Draws a mouth.
-        self.draw_eyes() - Draws the eyes open.
+        self.draw_mouth() - Modifies the pixels list to show a smile.
+        self.draw_eyes() - Modifies the pixels list to show open eyes.
 
 
 ### 2.3. Code style
 
 1. What code style is used in the code? Is it likely to be the same as the code style used in the SenseHat? Give to reasons as to why/why not:
 
-> PEP 8, yes because SenseHat is an official python library which means it follow standard python practices which includes PEP 8.
+> PEP 8, no it's likely not the same. The sense_hat.py file in this project is just a mock class made for this course so it's newer and follows the rules. The real SenseHat library is older code. Just because a library is official doesn't mean it follows PEP 8 especially if it was written before the style guide was enforced.
 >
 
 2. List three aspects of this convention you see applied in the code.
 
 > Function names are in lowercase using and use underscores where applicable.
 > 
-> Docstrings are writen in triple quotes.
+> Class names are in PascalCase.
 > 
 > Theres 1 blank line between methods.
 >
@@ -290,7 +291,7 @@ Include a screenshot of the sad smiley or the modified `main.py`:
      1. Which colors are defined and in which class(s)?
         > White, Green, Red, Yellow, Blank
      2. What type of variables hold these colors? Are the values expected to change during the program's execution? Explain your answer.
-        > Const variables and no they are not hence they are const.
+        > Tuples no they are not tuples are immutable, and the uppercase naming indicates they are intended to be constants.
      3. Add the color blue to the appropriate class using the appropriate format and values.
         > BLUE = (0, 0, 255)
 
@@ -314,6 +315,10 @@ Include a screenshot of the sad smiley or the modified `main.py`:
   2. **Refactor subclasses to use the `complexion` method:** Modify any subclass that directly accesses the color variable to instead utilize the new `complexion` method. This ensures that color handling is centralized and can be easily modified in the future.
 
   3. **Determine the applicable Object-Oriented principle:** Consider whether Abstraction, Polymorphism, Inheritance, or Encapsulation best applies to the modifications made in this step.
+
+`
+      Encapsulation, by replacing direct access to a variable like yellow with a method like complexion() we are hiding the internal implementation this is Encapsulation.
+`
 
   4. **Verify the implementation:** Ensure that the modifications function as expected. The smileys should still display in yellow, confirming that the new method correctly replaces the direct color references.
 
